@@ -1,4 +1,30 @@
+div{
+    margin: 10px;
+}
+
 .img_user{
     height : 100px;
 
+}
+
+.img_add_user{
+    height : 100px;
+}
+
+h1{
+    text-align: center;
+    padding: 20px;
+    font-size: 4em;
+}
+
+.contacts{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 40px;
+}
+
+.contact{
+    margin : 10px;
+    width: 200px;
 }

@@ -8,4 +8,5 @@
     <script src="jquery-3.6.0.js"></script>
 </head>
 <body>
+<button class='buttonBack' onclick="history.go(-1);">Back </button>
 <?php include 'functions.php' ?>

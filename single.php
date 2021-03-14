@@ -1,5 +1,4 @@
 <?php require 'header.php';
-
 if (!empty($_GET['id'])){
     $id = $_GET['id'];
 } else{
@@ -15,8 +14,9 @@ $h2_content = "$infos[lastname] $infos[firstname]";
 echo "<h2>$h2_content</h2>";
 
 $href_link = "href='computer.php?id=$infos[computer_id]'";
-$link = "<a $href_link>$brand[brand]</a>";
-echo $link;
+$link ="<a $href_link>$brand[brand]</a>";
+$div = "<div>Computer: $link</div>";
+echo $div;
 
 $list = "";
 foreach($hobbies as $hobby){
@@ -25,7 +25,7 @@ foreach($hobbies as $hobby){
 
     $list =$list. "<li>$link</li>";
 }
-echo "<ul>$list</ul>";
+echo "<div>Hobby:<ul>$list</ul></div>";
 
 require 'footer.php';
 ?>

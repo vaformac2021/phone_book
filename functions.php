@@ -93,4 +93,25 @@ function getIdOfHobby($hobby){
     return $result;
 }
 
+function getHobbiesList(){
+    $db = db_connect();
+    $query = "  SELECT id, hobby
+                FROM hobbies";
+    $stmt = $db->query($query);
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getComputersList(){
+    $db = db_connect();
+    $query = "  SELECT id, brand
+                FROM computers";
+    $stmt = $db->query($query);
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+
 ?>
