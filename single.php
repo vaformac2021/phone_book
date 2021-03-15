@@ -10,12 +10,28 @@ $infos = getInternInfos($id);
 $brand = getInternComputer($id);
 $hobbies = getInternHobbies($id);
 
+$gender = $infos['gender'];
+if($gender === 'm'){
+    $genderBis = 'Mr';
+} else {
+    $genderBis = 'Mme';
+}
+
 $h2_content = "$infos[lastname] $infos[firstname]";
-echo "<h2>$h2_content</h2>";
+echo "<h2>$genderBis $h2_content</h2>";
 
 $href_link = "href='computer.php?id=$infos[computer_id]'";
 $link ="<a $href_link>$brand[brand]</a>";
-$div = "<div>Computer: $link</div>";
+$div = "<div>Marque d'ordinateur: $link</div>";
+echo $div;
+
+
+$div = "<div>Mail : $infos[mail]</div>";
+echo $div;
+
+setlocale(LC_ALL, 'fr_FR.utf-8');
+$date = strftime('%d %B %G',strtotime($infos['birthday']));
+$div = "<div>Date de naissance : $date</div>";
 echo $div;
 
 $list = "";

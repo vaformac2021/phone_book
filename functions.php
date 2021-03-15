@@ -25,7 +25,7 @@ function getInterns(){
 
 function getInternInfos($id){
     $db = db_connect();
-    $query = "SELECT id, lastname, firstname, birthday, gender, computer_id
+    $query = "SELECT id, lastname, mail, firstname, birthday, gender, computer_id
     FROM interns i
     WHERE i.id = ".$id;
     $stmt = $db->query($query);
@@ -49,10 +49,12 @@ function getInternHobbies($id){
     FROM interns i
     INNER JOIN interns_hobbies ih ON ih.intern_id = i.id
     INNER JOIN hobbies h ON ih.hobby_id = h.id
-    WHERE i.id = ".$id;
-    $stmt = $db->query($query);
+    WHERE i.id = ?";
+    
+    $statement = $db->prepare($query);
+    $statement->execute(array($id));
 
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
 
@@ -75,10 +77,12 @@ function getAllUsersForHobby($hobby){
     FROM interns i
     INNER JOIN interns_hobbies ih ON i.id = ih.intern_id
     INNER JOIN hobbies h ON ih.hobby_id = h.id
-    WHERE h.hobby = '" . $hobby . "'";
-    $stmt = $db->query($query);
+    WHERE h.hobby = ?";
+    $statement = $db->prepare($query);
+    $statement->execute(array($hobby));
+    //$stmt = $db->query($query);
 
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
 

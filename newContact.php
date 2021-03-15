@@ -20,6 +20,10 @@ require 'header.php';
                 <label for="firstname">Pr&eacute;nom : </label><br />
                 <input class="inputText" type="text" name="firstname" id="firstname" placeholder="Pr&eacute;nom :" />
             </p>
+            <p>
+                <label for="mail">Email : </label><br />
+                <input class="inputText" type="text" name="mail" id="mail" placeholder="Email :" />
+            </p>
             <div>
                 <label for="computer">Quel est votre ordinateur :</label>
                 <select name="computer" id="computer">

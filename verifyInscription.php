@@ -16,6 +16,7 @@ function isEmpty($get){
     if (!empty($get)){
         $lastname = $get['lastname'];
         $firstname = $get['firstname'];
+        $mail = $get['mail'];
         $birthday = $get['birthday'];
         $gender = $get['gender'];
         $computer = $get['computer'];
@@ -26,7 +27,7 @@ function isEmpty($get){
             $hobbies[] = $get[$hobby];
         }
         echo '<br>';
-        addToMySQL($lastname, $firstname, $birthday, $gender, $computer, $hobbies);
+        addToMySQL($lastname, $firstname, $mail, $birthday, $gender, $computer, $hobbies);
     }
     else {
         echo "error level 1";
@@ -69,12 +70,12 @@ function db_connect(){
     }
 }
 
-function addToMySQL($lastname, $firstname, $birthday, $gender, $computer, $hobbies){
+function addToMySQL($lastname, $firstname, $mail, $birthday, $gender, $computer, $hobbies){
 
     $pdo = db_connect();
-    $sql = "INSERT INTO interns (lastname, firstname, birthday, gender, computer_id) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO interns (lastname, firstname, mail, birthday, gender, computer_id) VALUES (?,?,?,?,?,?)";
     $stmt= $pdo->prepare($sql);
-    $stmt->execute([$lastname, $firstname, $birthday,$gender,$computer]);
+    $stmt->execute([$lastname, $firstname, $mail, $birthday,$gender,$computer]);
 
     //get the element
 
